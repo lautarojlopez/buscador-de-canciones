@@ -15,7 +15,7 @@ function App() {
   const {artista, cancion} = busquedaLetra
 
   useEffect(() => {
-    if(Object.keys(busquedaLetra).length === 0){
+    if(busquedaLetra.artista === '' || busquedaLetra.cancion === '' || Object.keys(busquedaLetra).length === 0){
       return
     }
 
@@ -28,14 +28,14 @@ function App() {
           return response
         }).catch( (error) =>{
           setErrorLetra(true)
-          return ''
+          return
         }),
         axios.get(url2).then( response => {
           setErrorArtista(false)
           return response
         } ).catch( (error) =>{
           setErrorArtista(true)
-          return {}
+          return
         })
       ])
 
@@ -54,16 +54,16 @@ function App() {
       <Buscador
         setBusquedaLetra = {setBusquedaLetra}
       />
-      {errorLetra || errorArtista
-        ? <p className="text-4xl text-center text-red-600 mt-5">No se encontraron resultados <i className="fas fa-volume-mute"></i></p>
+      {(errorLetra || errorArtista)
+        ? <p className="text-4xl p-5 text-center text-red-600 mt-5">No se encontraron resultados <i className="fas fa-volume-mute"></i></p>
         :
-        <div className="flex flex-col md:flex-row md:px-20">
-          <div className="w-6/12">
+        <div className="flex flex-col-reverse items-center justify-center md:items-start md:flex-row md:px-20">
+          <div className="w-full md:w-6/12">
             <Info
               info = {info}
             />
           </div>
-          <div className="w-6/12">
+          <div className="w-full md:w-6/12">
             <Letra
               cancion = {cancion}
               letra = {letra}

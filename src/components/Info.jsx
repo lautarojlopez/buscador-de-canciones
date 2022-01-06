@@ -15,7 +15,7 @@ function Info({info}) {
   }
 
   return(
-    <div className="flex flex-col justify-center items-center my-5 w-10/12">
+    <div className="flex flex-col justify-center items-center px-8 md:px-0 my-5 w-12/12">
       <h2 className="text-center uppercase border-b-4 border-sky-800 text-4xl mb-3">{info.strArtist}</h2>
       <img className="w-8/12 my-5" src={imagen} alt="" />
       <p className="mb-2">Genero: {info.strStyle ? info.strStyle : 'Desconocido'}</p>

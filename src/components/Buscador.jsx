@@ -32,16 +32,16 @@ function Buscador({setBusquedaLetra}) {
   }
 
   return(
-    <div className="flex flex-col h-auto py-10 bg-sky-900 flex justify-center items-center">
+    <div className="flex flex-col min-h-screen bg-sky-900 flex justify-center items-center">
       <h1
-        className="font-work text-4xl text-white bg-indigo-700 p-4 rounded border-b-4 border-indigo-600 rounded-tl-xl rounded-br-xl transition-all ease-in-out duration-100">
+        className="mx-4 md:mx-0 font-work text-4xl text-white bg-indigo-700 p-4 rounded border-b-4 border-indigo-600 rounded-tl-xl rounded-br-xl transition-all ease-in-out duration-100">
         <i className="fas fa-compact-disc animate-spin"></i> <i className="fas fa-music animate-bounce text-sm relative -top-5"></i> Buscador de Letras de Caciones
       </h1>
       <form
         onSubmit = {buscarInformacion}
-        className="flex flex-col mt-5 w-8/12 justify-center items-center">
-        <div className="flex flex-row w-full">
-          <div className="flex flex-col w-8/12 mr-3">
+        className="flex flex-col mt-5 w-full md:w-8/12 justify-center items-center">
+        <div className="flex flex-col md:flex-row w-full">
+          <div className="flex flex-col w-full px-4 md:px-0 md:w-8/12 md:mr-3">
             <label className={`text-xl ${error && artista.trim() === '' ? 'text-red-500' : 'text-white'}`}><i className="fas fa-user"></i> Artista</label>
             <input
               onChange={updateState}
@@ -53,7 +53,7 @@ function Buscador({setBusquedaLetra}) {
              />
              <p className={`text-md text-red-500 font-bold text-center transition-all ease-linear duration-150 ${error && artista.trim() === '' ? 'visible opacity-100': 'invisible opacity-0'}`}>Escribe un artista</p>
           </div>
-          <div className="flex flex-col w-8/12 ml-3">
+          <div className="flex flex-col w-full px-4 md:px-0 md:w-8/12 md:ml-3">
             <label className={`text-xl ${error && cancion.trim() === '' ? 'text-red-500' : 'text-white'}`}><i className="fas fa-play-circle"></i> Canción</label>
             <input
               onChange={updateState}
@@ -66,7 +66,7 @@ function Buscador({setBusquedaLetra}) {
           </div>
         </div>
         <button
-          className="font-work text-2xl mt-5 w-6/12 text-white bg-indigo-700 p-3 rounded border-b-4 border-indigo-600 rounded-tl-xl rounded-br-xl transition-all ease-in-out duration-200 hover:bg-indigo-800 hover:border-indigo-700">
+          className="font-work text-2xl mt-5 w-11/12 md:w-6/12 text-white bg-indigo-700 p-3 rounded border-b-4 border-indigo-600 rounded-tl-xl rounded-br-xl transition-all ease-in-out duration-200 hover:bg-indigo-800 hover:border-indigo-700">
           <i className="fas fa-search"></i> Buscar
         </button>
       </form>
