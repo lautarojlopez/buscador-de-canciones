@@ -10,7 +10,8 @@ function App() {
   const [busquedaLetra, setBusquedaLetra] = useState({})
   const [letra, setLetra] = useState('')
   const [info, setInfo] = useState({})
-  const [error, setError] = useState(false)
+  const [errorLetra, setErrorLetra] = useState(false)
+  const [errorArtista, setErrorArtista] = useState(false)
   const {artista, cancion} = busquedaLetra
 
   useEffect(() => {
@@ -23,16 +24,22 @@ function App() {
       const url2 = `https://www.theaudiodb.com/api/v1/json/2/search.php?s=${artista}`
       const [letra, informacion] = await Promise.all([
         axios.get(url).then( response => {
-          setError(false)
+          setErrorLetra(false)
           return response
-        }).catch( (error) => setError(true) ),
+        }).catch( (error) =>{
+          setErrorLetra(true)
+          return ''
+        }),
         axios.get(url2).then( response => {
-          setError(false)
+          setErrorArtista(false)
           return response
-        } ).catch( (error) => setError(true) )
+        } ).catch( (error) =>{
+          setErrorArtista(true)
+          return {}
+        })
       ])
 
-      if(!error){
+      if(!errorLetra && !errorArtista){
         let lyrics = letra.data.lyrics
         setInfo(informacion.data.artists[0])
         setLetra(lyrics)
@@ -47,7 +54,7 @@ function App() {
       <Buscador
         setBusquedaLetra = {setBusquedaLetra}
       />
-      {error
+      {errorLetra || errorArtista
         ? <p className="text-4xl text-center text-red-600 mt-5">No se encontraron resultados <i className="fas fa-volume-mute"></i></p>
         :
         <div className="flex flex-col md:flex-row md:px-20">
