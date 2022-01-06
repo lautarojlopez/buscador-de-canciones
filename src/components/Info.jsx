@@ -1,6 +1,9 @@
 import defaultimg from '../default.jpg'
+import {animateScroll as scroll} from 'react-scroll'
 
 function Info({info}) {
+
+  scroll.scrollTo(window.innerHeight)
 
   if(Object.keys(info).length === 0){
     return null

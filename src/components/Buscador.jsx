@@ -60,7 +60,7 @@ function Buscador({setBusquedaLetra}) {
               value={cancion}
               className={`focus:outline-none p-2 text-white text-xl border-b-4  bg-transparent transition-all ease-linear duration-150 ${error && cancion.trim() === '' ? "border-red-500 hover:border-red-600 focus:border-red-600" : "border-sky-800 hover:border-sky-500 focus:border-sky-500"}`}              type="text"
               name="cancion"
-              placeholder="Ej: Todo de tí, Mienteme"
+              placeholder="Ej: Todo de tí, Dynamite"
             />
             <p className={`text-md text-red-500 font-bold text-center transition-all ease-linear duration-150 ${error && cancion.trim() === '' ? 'visible opacity-100': 'invisible opacity-0'}`}>Escribe una canción</p>
           </div>
